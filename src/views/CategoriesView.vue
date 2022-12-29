@@ -29,9 +29,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title">
-                    <a href="makeup.html" @click.prevent="GoToCat('makeup')"
-                      >مكياج</a
-                    >
+                    <a href="" @click.prevent="GoToCat('makeup')">مكياج</a>
                   </h4>
                 </div>
               </div>
@@ -183,6 +181,11 @@ export default {
     }
     if (localStorage.category) {
       this.category = JSON.parse(localStorage.category);
+    } else {
+      this.$router.push("/shop");
+    }
+    if (localStorage.myObj) {
+      this.myObj = JSON.parse(localStorage.myObj);
     }
     // this.DisplayAll = true;
   },
@@ -196,6 +199,9 @@ export default {
       // localStorage.DisplayAll = JSON.stringify(this.DisplayAll);
       this.title = this.cats[single_cat];
       this.myObj = [];
+      // this.category = JSON.parse(localStorage.category);
+      this.category = this.cats[single_cat];
+      localStorage.category = JSON.stringify(this.category);
       // this.belongsToCurrentCategory = [];
       // for (let i = 0; i < this.products.length; i++) {
       //   for (let c = 0; c < this.cats.length; c++) {

@@ -29,9 +29,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title">
-                    <a href="makeup.html" @click.prevent="GoToCat('makeup')"
-                      >مكياج</a
-                    >
+                    <a href="" @click.prevent="GoToCat('makeup')">مكياج</a>
                   </h4>
                 </div>
               </div>
@@ -78,7 +76,7 @@
         <div class="col-sm-9 padding-right">
           <div class="features_items">
             <!--features_items-->
-            <h2 class="title text-center" v-show="DisplayAll">المنتجات</h2>
+            <h2 class="title text-center">المنتجات</h2>
 
             <!--comm-->
             <!-- <Product
@@ -90,11 +88,7 @@
             /> -->
             <!--comm-->
 
-            <div
-              class="col-sm-4"
-              v-show="DisplayAll"
-              v-for="(item, index) in products"
-            >
+            <div class="col-sm-4" v-for="(item, index) in products">
               <div class="product-image-wrapper">
                 <div class="single-products">
                   <div class="productinfo text-center">
@@ -208,12 +202,17 @@ export default {
       //   }
       //   // this.product[i].category = this.
       // }
+      //
+      //
       let x = this.cats;
       const foundObjects = this.products.filter(function (object) {
         return object.category == x[single_cat];
       });
       this.myObj = foundObjects;
+      this.category = foundObjects[0].category;
       localStorage.categorey = JSON.stringify(this.categorey);
+      localStorage.myObj = JSON.stringify(this.myObj);
+      this.$router.push("/categories");
       // this.belongsToCurrentCategory.push(foundObjects);
       // console.log(foundObjects);
       // alert(foundObjects);
